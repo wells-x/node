@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var multipart = require('connect-multiparty');
-var multipartMiddleware = multipart();
-var bodyParser = require('body-parser');
+let express = require('express'),
+    router = express.Router(),
+    multipart = require('connect-multiparty'),
+    multipartMiddleware = multipart(),
+    bodyParser = require('body-parser');
 
 
 router.use(bodyParser.urlencoded({ extended: false }));

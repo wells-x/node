@@ -1,6 +1,16 @@
-let  pool = require('./mysql-new');
+let pool = require('./mysql-new');
 // console.log(pool);
 
-module.exports = function (str,fn) {
-    pool.query(str,fn)
+module.exports = {
+    query: function (form, str) {
+        return new Promise((resolve, reject) => {
+            pool.query(`SELECT ${str || "*"} FROM ${form}`, function (err, rows, fields) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows)
+                }
+            });
+        })
+    },
 };
