@@ -1,0 +1,22 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#app{
+	text-align: center;
+	margin: 0 auto;
+	line-height: 40px;
+}
+
+#app table{
+	margin: 0 auto;
+}
+
+#app td{
+	padding: 0 10px;
+}
