@@ -4,7 +4,7 @@ let express = require('express'),
     // multipartMiddleware = multipart(),
     bodyParser = require('body-parser');
 
-/*router.use(bodyParser.urlencoded({extended: false}));
+router.use(bodyParser.urlencoded({extended: false}));
 router.get('/', function (req, res, next) {
     res.send(JSON.stringify(req.query));
     // console.log(req.query,req.query.userName);
@@ -15,7 +15,6 @@ router.get('/', function (req, res, next) {
 router.post('/', multipartMiddleware, function (req, res) {
     console.log(req.body);
     res.send(JSON.stringify(req.body));
-});*/
-router.use('/book',require('./book'));
+});
 
 module.exports = router;
