@@ -22,6 +22,11 @@ app.use(function (req, res, next) {
 });
 const index = require('./routes');
 
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
+
 app.use('/api', index);
 // app.use('/test', test);
 /*app.use('/book', book);
@@ -29,11 +34,6 @@ app.use('/user', user);*/
 
 app.use('/', express.static('html/'));
 
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
 
 
 app.use(function (req, res, next) {

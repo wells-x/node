@@ -1,6 +1,7 @@
 const config = {
-    insert: ({name, age, account, password, email}) => `INSERT INTO users (id, name, age, account, password, email) VALUES (?, ${name}, ${age}, ${account}, ${password}, ${email})`,
-    query: ({}) => `SELECT * FROM users`,
+    insert: `INSERT INTO users SET ?`,
+    query: `SELECT * FROM users WHERE account = ?`,
+    queryAll: `SELECT * FROM users`,
 };
 
 module.exports = config;

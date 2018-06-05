@@ -1,18 +1,30 @@
 const pool = require('./pool');
+const Config = require('./config');
 
-module.exports = async function () {
-    /* return new Promise((resolve, reject) => {
-
-         pool().then((connection) => {
-
-         })
-
-     })*/
+async function queryBase ({sql, value}) {
+    // console.log(sql, value);
     const connection = await pool();
-    const item = await connection.query('SELECT * FROM users', function (err, rows) {
-        if (err) return Promise.reject(err);
-        Promise.resolve(rows)
-    });
-    console.log(JSON.stringify(item));
-    connection.release();
+    return new Promise((resolve, reject) => {
+        connection.query(sql, value || '', function (err, rows) {
+            if (err) return reject(err);
+            connection.release();
+            resolve(rows);
+        });
+    })
+}
+
+module.exports = {
+    async query ({account}) {
+        let sql;
+        if (account) {
+            sql = Config.query;
+        } else {
+            sql = Config.queryAll;
+        }
+        return await  queryBase({sql, value: account})
+
+    },
+    async insert (user) {
+        return await queryBase({sql: Config.insert, value: user})
+    }
 };
