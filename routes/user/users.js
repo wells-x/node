@@ -2,7 +2,8 @@
 const {Response, ErrorResponse} = require('../../class/Response'),
     express = require('express'),
     router = express.Router(),
-    query = require('../../functions/sql/query'), add = require('./add');
+    query = require('../../functions/sql/query'),
+    add = require('./add');
 
 router
     .get('/', function (req, res,) {

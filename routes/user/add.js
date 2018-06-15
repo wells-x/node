@@ -1,6 +1,7 @@
 // import {Response} from '../class/index';
 const {Response, ErrorResponse} = require('../../class/Response');
 const express = require('express'),
+    query = require('../../functions/sql/query'),
     router = express.Router();
 // const query = require('../../functions/sql/query');
 
@@ -11,7 +12,8 @@ router
     })
 
     .post('/', async function (req, res,) {
-        // const result = await query.query(req.body);
+        const result = await query.query(req.body);
+        console.log(result);
         res.send(new Response(req.body))
         // res.send(new Response({data: result}));
     });
