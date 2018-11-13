@@ -10,7 +10,7 @@ var book = require('./routes/book');
 var user = require('./routes/user');
 
 // var test = require('./test/mysql-pool');*/
-
+require('./routes/socket');
 
 const app = express();
 
@@ -27,21 +27,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-app.use('/api', index);
-// app.use('/test', test);
-/*app.use('/book', book);
-app.use('/user', user);*/
-
-app.use('/', express.static('html/'));
-
-
+app.use('/', index);
 
 app.use(function (req, res, next) {
-    // console.log(req, res, next);
     // console.log(req.headers);
     // res.redirect('./404.html');
     res.status(200)
-        .send(new ErrorResponse({code: 404, msg: '路径错误'}));
+        .send(new ErrorResponse({code: 404, data: {path: req.path}, msg: '路径错误'}));
     next();
 });
 
