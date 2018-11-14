@@ -10,11 +10,11 @@ var book = require('./routes/book');
 var user = require('./routes/user');
 
 // var test = require('./test/mysql-pool');*/
-require('./routes/socket');
+require('./functions/socket');
 
 const app = express();
 
-app.use(favicon(__dirname + '/html/images/favicon.ico'));
+// app.use(favicon(__dirname + '/html/images/favicon.ico'));
 // 注册引入的接口
 app.use(function (req, res, next) {
     // console.log(req.url);
@@ -27,16 +27,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-app.use('/', index);
+app.use('/api', index);
 
+app.use('/', express.static('html/'));
 app.use(function (req, res, next) {
-    // console.log(req.headers);
-    // res.redirect('./404.html');
     res.status(200)
         .send(new ErrorResponse({code: 404, data: {path: req.path}, msg: '路径错误'}));
     next();
 });
-
 // error handler
 app.use(function (err, req, res, next) {
     // set locals, only providing error in development

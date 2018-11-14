@@ -1,1 +1,46 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>vue@2.9.6</title><link href=/static/css/app.9db0e3daee85d28de7763f6a3f823958.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.89ddf69b9cf9464afdff.js></script><script type=text/javascript src=/static/js/app.4f3b65da048e80b34bf8.js></script></body></html>
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <style>
+            p {
+                color: orange;
+                padding: 5px 10px;
+                margin: 0;
+            }
+
+            .user_msg {
+                color: #ccc;
+            }
+
+            #messages {
+                background: #000;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="vertical-center">
+            <div class="container">
+                <ul id="messages" class="list-unstyled"></ul>
+                <hr/>
+                <form role="form" id="chat_form" onsubmit="sendMessage(); return false;">
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="message" name="message"
+                               placeholder="Type text to echo in here" value="" autofocus/>
+                    </div>
+                    <button type="button" id="send" class="btn btn-primary"
+                            onclick="sendMessage();">
+                        Send Message
+                    </button>
+
+                </form>
+                <div class="form-group"><span>nikename：</span><input id="name" type="text"/>
+                    <button class="btn btn-sm btn-info" onclick="changName();">change</button>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+
+</html>

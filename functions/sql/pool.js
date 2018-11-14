@@ -14,8 +14,9 @@ module.exports = async function () {
         pool.getConnection((err, connection) => {
             // console.log(err, connection);
             if (err) return reject(err);
-            resolve(connection)
+            resolve(connection);
             // connection.query()
+            connection.release();
         });
 
     })

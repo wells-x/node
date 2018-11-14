@@ -4,6 +4,7 @@ const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart();
 const bodyParser = require('body-parser');
 const user = require('./user/users');
+const driver = require('./drivers/index');
 router.use(bodyParser.urlencoded({extended: false}));
 /*
 router.all('/', function (req, res, next) {
@@ -21,5 +22,6 @@ router.all('/', function (req, res, next) {
 
 
 router.use('/user', user);
+router.use('/driver', driver);
 module.exports = router;
 // export  default router;
